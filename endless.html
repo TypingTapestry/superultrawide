@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Endless | Super Ultrawide Wallpapers</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<link rel="stylesheet" href="assets/css/main.css">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css"></noscript>
+		<script src="assets/js/jquery.min.js" defer></script>
+		<script src="assets/js/browser.min.js" defer></script>
+		<script src="assets/js/breakpoints.min.js" defer></script>
+		<script src="assets/js/util.js" defer></script>
+		<script src="assets/js/main.js" defer></script>
+		<script src="theme.js" defer></script>
+		<script src="arr.js" defer></script>
+		<script src="app.js" defer></script>
+	</head>
+	<body class="is-preload">
+		<script>
+			const pTheme = localStorage.getItem("theme") || "light";
+			document.body.className = pTheme;
+		</script>
+		<div id="wrapper">
+			<header id="header">
+				<div class="inner">
+					<center>
+						<a class="logo"><span class="symbol"><img src="images/sunset.svg" id="icon"></span></a>
+					</center>
+				</div>
+			</header>
+			<div id="main">
+				<div class="inner">
+					<header>
+						<h3>> a curated collection of 5120 x 1440 (32:9) wallpapers <</h3>
+						<section>
+							<ul class="actions fit">
+								<li><a href="index.html" class="button fit">all</a></li>
+								<li><a href="photography.html" class="button fit">photography</a></li>
+								<li><a href="art.html" class="button fit">art</a></li>
+                                <li><a href="#" class="button primary fit">endless</a></li>
+							</ul>
+							<ul class="actions fit">
+								<li><a onClick="window.location.reload()" class="button primary fit">randomize</a></li>
+								<li><a href="https://drive.google.com/drive/folders/1BKNqZrUjzLkhIUZzNsGSugwEE7hYnfum" target="_blank" rel="noopener noreferrer" class="button primary fit">download all (1.5 gb)</a></li>
+							</ul>
+						</section>
+					</header>
+					<section>
+                        <article>
+                            <script>
+                                window.onload = function() {
+                                    
+                                    const viewportHeight = document.documentElement.clientHeight;
+
+                                    function createContainer() {
+                                        const span = document.createElement('span');
+                                        span.setAttribute('class', 'image');
+                                        return span;
+                                    };
+
+                                    function createImageElement(img) {
+                                        const imgEl = document.createElement('img');
+                                        imgEl.setAttribute('src', img);
+                                        imgEl.setAttribute('style', 'width: 100%');
+                                        return imgEl;
+                                    };
+
+                                    function getRandomImage() {
+                                        return allPics[Math.floor(Math.random() * allPics.length)];
+                                    };
+
+                                    function createPictureRow() {
+                                        const section = createContainer();
+                                        for (let i = 0; i < 1; i++) {
+                                            const img = getRandomImage();
+                                            const imgEl = createImageElement(img);
+                                            section.appendChild(imgEl);
+                                        };
+                                        return section;
+                                    };
+
+                                    const article = document.querySelector('article');
+
+                                    for (let i = 0; i < 4; i++) {
+                                        article.appendChild(createPictureRow());
+                                    };
+
+                                    window.addEventListener('scroll', function(event) {
+                                        const scrolledY = window.scrollY;
+                                        const pageHeight = document.documentElement.scrollHeight;
+                                        const scrolledToEnd = (scrolledY + viewportHeight) >= pageHeight - 50;
+                                        if (scrolledToEnd) {
+                                            article.appendChild(createPictureRow());
+                                        };
+                                    });
+                                };
+                            </script>
+                        </article>
+					</section>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
